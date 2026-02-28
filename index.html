@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreeJobBoard.ai — The Shopify of Job Boards</title>
+  <meta name="description" content="The job board template industry is broken. We're fixing it. Launch a beautiful, modern job board — free. Forever." />
+  <meta property="og:title" content="FreeJobBoard.ai — The Shopify of Job Boards" />
+  <meta property="og:description" content="Every job board tool charges you $100/month for a template that looks like 2015. We give you something better — for free. Forever." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://freejobboard.ai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #111118;
+      --bg3: #1a1a24;
+      --border: rgba(255,255,255,0.08);
+      --border-accent: rgba(99,102,241,0.4);
+      --indigo: #6366f1;
+      --indigo-light: #818cf8;
+      --indigo-dark: #4f46e5;
+      --green: #22c55e;
+      --red: #ef4444;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--indigo-light); }
+    .nav-cta {
+      background: var(--indigo);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--indigo-dark); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 1.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(99,102,241,0.12);
+      border: 1px solid var(--border-accent);
+      color: var(--indigo-light);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 0.375rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      background: var(--indigo-light);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+      margin: 0 auto 1.5rem;
+    }
+    .hero h1 .accent { color: var(--indigo-light); }
+    .hero h1 .strike {
+      text-decoration: line-through;
+      color: var(--text-dim);
+      text-decoration-color: var(--red);
+    }
+    .hero-sub {
+      font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-sub strong { color: var(--text); }
+
+    /* WAITLIST FORM */
+    .waitlist-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 480px;
+      margin: 0 auto 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .waitlist-form input {
+      flex: 1;
+      min-width: 220px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.9375rem;
+      padding: 0.875rem 1.125rem;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: inherit;
+    }
+    .waitlist-form input::placeholder { color: var(--text-dim); }
+    .waitlist-form input:focus { border-color: var(--indigo); }
+    .waitlist-form button {
+      background: var(--indigo);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .waitlist-form button:hover { background: var(--indigo-dark); transform: translateY(-1px); }
+    .waitlist-note {
+      font-size: 0.8125rem;
+      color: var(--text-dim);
+      margin-bottom: 3rem;
+    }
+    .waitlist-note strong { color: var(--green); }
+    .hero-screenshot {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+    }
+    .browser-bar {
+      background: var(--bg2);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .browser-url {
+      flex: 1;
+      background: var(--bg3);
+      border-radius: 6px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin: 0 0.75rem;
+    }
+    .mock-board {
+      padding: 2rem;
+      min-height: 280px;
+    }
+    .mock-board-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .mock-board-title { font-size: 1.25rem; font-weight: 700; }
+    .mock-search {
+      display: flex;
+      gap: 0.5rem;
+      flex: 1;
+      max-width: 400px;
+    }
+    .mock-input {
+      flex: 1;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-dim);
+    }
+    .mock-btn {
+      background: var(--indigo);
+      color: #fff;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+    }
+    .mock-jobs { display: flex; flex-direction: column; gap: 0.75rem; }
+    .mock-job {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .mock-job-left { display: flex; align-items: center; gap: 0.875rem; }
+    .mock-logo {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .mock-job-title { font-size: 0.875rem; font-weight: 600; }
+    .mock-job-meta { font-size: 0.75rem; color: var(--text-dim); margin-top: 2px; }
+    .mock-tag {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      padding: 0.25rem 0.625rem;
+      border-radius: 999px;
+    }
+    .tag-green { background: rgba(34,197,94,0.12); color: var(--green); }
+    .tag-indigo { background: rgba(99,102,241,0.12); color: var(--indigo-light); }
+    .tag-amber { background: rgba(245,158,11,0.12); color: #fbbf24; }
+
+    /* SECTION STYLES */
+    section { padding: 6rem 1.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--indigo-light);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: clamp(1.875rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .section-sub {
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* PROBLEM SECTION */
+    .problem { background: var(--bg2); }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .problem-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+    }
+    .problem-card .icon {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+    .problem-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .problem-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+    .problem-card .price-tag {
+      display: inline-block;
+      background: rgba(239,68,68,0.1);
+      color: #f87171;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      padding: 0.25rem 0.625rem;
+      border-radius: 6px;
+      margin-top: 0.75rem;
+    }
+
+    /* COMPARISON TABLE */
+    .comparison { background: var(--bg); }
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 3rem;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .comp-table thead {
+      background: var(--bg3);
+    }
+    .comp-table th {
+      padding: 1rem 1.5rem;
+      text-align: left;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .comp-table th.us {
+      color: var(--indigo-light);
+      background: rgba(99,102,241,0.08);
+    }
+    .comp-table td {
+      padding: 1rem 1.5rem;
+      font-size: 0.875rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      background: var(--bg2);
+    }
+    .comp-table td.feature-name {
+      font-weight: 600;
+      color: var(--text);
+      background: var(--bg2);
+    }
+    .comp-table td.us {
+      background: rgba(99,102,241,0.05);
+    }
+    .comp-table tbody tr:last-child td { border-bottom: none; }
+    .check { color: var(--green); font-weight: 700; }
+    .cross { color: var(--red); }
+    .partial { color: #fbbf24; }
+
+    /* FEATURES */
+    .features { background: var(--bg2); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .feature-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .feature-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+    }
+    .feature-icon {
+      width: 44px; height: 44px;
+      background: rgba(99,102,241,0.12);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1.125rem;
+    }
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .feature-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+    .free-badge {
+      display: inline-block;
+      background: rgba(34,197,94,0.12);
+      color: var(--green);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-top: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* APP STORE */
+    .appstore { background: var(--bg); }
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .app-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+    .app-card:hover { border-color: var(--border-accent); }
+    .app-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .app-name { font-size: 0.9375rem; font-weight: 700; margin-bottom: 0.375rem; }
+    .app-desc { font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+    .app-price {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--indigo-light);
+    }
+    .app-price span { font-size: 0.75rem; font-weight: 400; color: var(--text-dim); }
+
+    /* HOW IT WORKS */
+    .how { background: var(--bg2); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+    .step { text-align: center; }
+    .step-number {
+      width: 52px; height: 52px;
+      background: rgba(99,102,241,0.12);
+      border: 1px solid var(--border-accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--indigo-light);
+      margin: 0 auto 1.25rem;
+    }
+    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* SOCIAL PROOF */
+    .social { background: var(--bg); text-align: center; }
+    .social-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .stat-num {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--indigo-light);
+    }
+    .stat-label { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+    /* WHO IT'S FOR */
+    .who { background: var(--bg2); }
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 640px) { .who-grid { grid-template-columns: 1fr; } }
+    .who-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .who-card .who-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--indigo-light);
+      margin-bottom: 0.75rem;
+    }
+    .who-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .who-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.25rem; }
+    .who-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .who-list li { font-size: 0.875rem; color: var(--text-muted); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .who-list li::before { content: '→'; color: var(--indigo-light); font-weight: 700; flex-shrink: 0; }
+
+    /* FINAL CTA */
+    .cta-section {
+      background: var(--bg);
+      text-align: center;
+      padding: 7rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      bottom: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    .cta-section p { font-size: 1.125rem; color: var(--text-muted); margin-bottom: 2.5rem; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.8125rem;
+      background: var(--bg);
+    }
+    footer a { color: var(--text-dim); text-decoration: none; }
+    footer a:hover { color: var(--text-muted); }
+
+    /* SUCCESS STATE */
+    .success-msg {
+      display: none;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: var(--green);
+      padding: 0.875rem 1.5rem;
+      border-radius: 10px;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      max-width: 480px;
+      margin: 0 auto 1rem;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem; }
+      .comp-table { font-size: 0.8125rem; }
+      .comp-table th, .comp-table td { padding: 0.75rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">FreeJobBoard<span>.ai</span></a>
+  <a href="#waitlist" class="nav-cta">Join Beta →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Now accepting beta testers
+    </div>
+    <h1>
+      The job board template<br />
+      industry is <span class="strike">broken</span>.<br />
+      <span class="accent">We're fixing it.</span>
+    </h1>
+    <p class="hero-sub">
+      Every job board tool charges you <strong>$100/month</strong> for a template that looks like 2015.
+      We give you something better — <strong>for free. Forever.</strong>
+      We make money when you do.
+    </p>
+
+    <div id="waitlist" class="waitlist-form">
+      <input type="email" id="email-input" placeholder="Enter your email address" required />
+      <button onclick="joinWaitlist()">Join Beta — Free →</button>
+    </div>
+    <div class="success-msg" id="success-msg">
+      🎉 You're on the list! We'll reach out when beta access opens.
+    </div>
+    <p class="waitlist-note">
+      <strong>Free forever.</strong> No credit card. No catch. No ugly templates.
+    </p>
+
+    <!-- MOCK BOARD PREVIEW -->
+    <div class="hero-screenshot">
+      <div class="browser-bar">
+        <div class="browser-dot" style="background:#ef4444"></div>
+        <div class="browser-dot" style="background:#fbbf24"></div>
+        <div class="browser-dot" style="background:#22c55e"></div>
+        <div class="browser-url">yourboard.com</div>
+      </div>
+      <div class="mock-board">
+        <div class="mock-board-header">
+          <div class="mock-board-title">⚡ Your Niche Job Board</div>
+          <div class="mock-search">
+            <div class="mock-input">Search jobs...</div>
+            <div class="mock-btn">Search</div>
+          </div>
+        </div>
+        <div class="mock-jobs">
+          <div class="mock-job">
+            <div class="mock-job-left">
+              <div class="mock-logo" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)"></div>
+              <div>
+                <div class="mock-job-title">Senior Software Engineer</div>
+                <div class="mock-job-meta">Acme Corp · Remote · $130k–$160k</div>
+              </div>
+            </div>
+            <span class="mock-tag tag-green">Full-time</span>
+          </div>
+          <div class="mock-job">
+            <div class="mock-job-left">
+              <div class="mock-logo" style="background:linear-gradient(135deg,#22c55e,#16a34a)"></div>
+              <div>
+                <div class="mock-job-title">Product Designer</div>
+                <div class="mock-job-meta">StartupCo · New York, NY · $110k–$140k</div>
+              </div>
+            </div>
+            <span class="mock-tag tag-indigo">Contract</span>
+          </div>
+          <div class="mock-job">
+            <div class="mock-job-left">
+              <div class="mock-logo" style="background:linear-gradient(135deg,#f59e0b,#d97706)"></div>
+              <div>
+                <div class="mock-job-title">Head of Growth</div>
+                <div class="mock-job-meta">GrowthLabs · Austin, TX · $150k+</div>
+              </div>
+            </div>
+            <span class="mock-tag tag-amber">Featured</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <p class="section-label">The Problem</p>
+    <h2 class="section-title">Why does every job board tool<br />feel like it was built in 2012?</h2>
+    <p class="section-sub">The existing players got comfortable. They charge a fortune for products that haven't kept up. Here's what you're dealing with today:</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="icon">💸</div>
+        <h3>Insane pricing for basic features</h3>
+        <p>Custom domains, removing their branding, email alerts — all locked behind expensive monthly plans. You're paying for features that should be table stakes.</p>
+        <span class="price-tag">$79–$299/month</span>
+      </div>
+      <div class="problem-card">
+        <div class="icon">🦕</div>
+        <h3>Templates from a different era</h3>
+        <p>Clunky navigation. No instant search. Zero dark mode. Not mobile-first. These tools look exactly like what they are — legacy software nobody has bothered to redesign.</p>
+        <span class="price-tag">Last redesigned: never</span>
+      </div>
+      <div class="problem-card">
+        <div class="icon">🔒</div>
+        <h3>You're locked in</h3>
+        <p>Your data, your subscribers, your SEO — trapped inside their platform. Migrate and you lose everything. That's not a product, that's a hostage situation.</p>
+        <span class="price-tag">No data portability</span>
+      </div>
+      <div class="problem-card">
+        <div class="icon">📉</div>
+        <h3>SEO is an afterthought</h3>
+        <p>Broken job URLs, no structured data, no sitemaps that actually work. You're paying monthly and still not showing up in Google for your niche.</p>
+        <span class="price-tag">Your traffic suffers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison">
+  <div class="container">
+    <p class="section-label">Head to Head</p>
+    <h2 class="section-title">We give away what they charge for.</h2>
+    <p class="section-sub">This isn't a stripped-down free tier designed to frustrate you into upgrading. This is a genuinely better product — free.</p>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Jobboardfire / Smartjobboard</th>
+          <th class="us">FreeJobBoard.ai ✦</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="feature-name">Custom domain</td>
+          <td><span class="partial">⚠ Paid plan only</span></td>
+          <td class="us"><span class="check">✓ Free</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Remove platform branding</td>
+          <td><span class="cross">✗ Never on free</span></td>
+          <td class="us"><span class="check">✓ Free</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Unlimited job listings</td>
+          <td><span class="cross">✗ Capped on free</span></td>
+          <td class="us"><span class="check">✓ Free</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Embeddable widget</td>
+          <td><span class="cross">✗ Doesn't exist</span></td>
+          <td class="us"><span class="check">✓ Free</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Dark mode</td>
+          <td><span class="cross">✗ No</span></td>
+          <td class="us"><span class="check">✓ Free</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">JSON-LD structured data (Google Jobs)</td>
+          <td><span class="partial">⚠ Broken or missing</span></td>
+          <td class="us"><span class="check">✓ Auto, always on</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Instant search + filters</td>
+          <td><span class="partial">⚠ Slow, clunky</span></td>
+          <td class="us"><span class="check">✓ Fast, modern</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Email alerts for job seekers</td>
+          <td><span class="partial">⚠ Paid add-on</span></td>
+          <td class="us"><span class="check">✓ Free</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Mobile-first design</td>
+          <td><span class="partial">⚠ Responsive, barely</span></td>
+          <td class="us"><span class="check">✓ Native mobile-first</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Auto-generated sitemap + robots.txt</td>
+          <td><span class="partial">⚠ Manual or missing</span></td>
+          <td class="us"><span class="check">✓ Automatic</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Monthly cost to get started</td>
+          <td><span class="cross">$79–$299/mo</span></td>
+          <td class="us"><span class="check">$0. Free. Forever.</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="container">
+    <p class="section-label">What You Get — Free</p>
+    <h2 class="section-title">Everything you need to launch.<br />Nothing held hostage.</h2>
+    <p class="section-sub">The free tier isn't a hook. It's the product. Paid apps extend your board — they don't unlock basics that should have been included.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>Modern, beautiful default theme</h3>
+        <p>A job board that actually looks like it was designed this decade. Mobile-first, dark mode included, instant search — out of the box.</p>
+        <span class="free-badge">Free</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Custom domain + SSL</h3>
+        <p>Point your domain. We handle SSL. <code style="background:var(--bg3);padding:2px 6px;border-radius:4px;font-size:0.8em;">yournichejobs.com</code> is live in minutes, not hours.</p>
+        <span class="free-badge">Free</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔌</div>
+        <h3>Embeddable careers widget</h3>
+        <p>One <code style="background:var(--bg3);padding:2px 6px;border-radius:4px;font-size:0.8em;">&lt;script&gt;</code> tag. Drop your job board into any website, Webflow page, or WordPress site instantly.</p>
+        <span class="free-badge">Free</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>SEO that actually works</h3>
+        <p>Auto-generated sitemaps, JSON-LD structured data (Google Jobs), clean SEO URLs, and meta tags per listing — all automatic.</p>
+        <span class="free-badge">Free</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📬</div>
+        <h3>Job seeker email alerts</h3>
+        <p>Candidates subscribe to keywords or categories. Auto-email when matching jobs post. Keeps them coming back to your board.</p>
+        <span class="free-badge">Free</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏢</div>
+        <h3>Employer self-service posting</h3>
+        <p>Employers post directly. You approve or auto-publish. Full admin control — edit, pause, or remove any listing instantly.</p>
+        <span class="free-badge">Free</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👤</div>
+        <h3>Candidate profiles + apply flow</h3>
+        <p>Job seekers create profiles, upload resumes, and apply natively — or you forward them to an external URL. Your call.</p>
+        <span class="free-badge">Free</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Built-in analytics</h3>
+        <p>Views, applications, top listings, traffic sources. Lightweight and fast — no third-party trackers required.</p>
+        <span class="free-badge">Free</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Your branding. No watermarks.</h3>
+        <p>Your logo. Your colors. Your name. No "Powered by FreeJobBoard.ai" stamped on your site. It's your board — it should look like it.</p>
+        <span class="free-badge">Free</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP STORE -->
+<section class="appstore">
+  <div class="container">
+    <p class="section-label">The App Store</p>
+    <h2 class="section-title">Grow your board.<br />Unlock what you need, when you need it.</h2>
+    <p class="section-sub">The base is free. When you're ready to monetize or scale, add apps one-click. Like Shopify — we build the platform, you build the business.</p>
+    <div class="apps-grid">
+      <div class="app-card">
+        <div class="app-icon">⭐</div>
+        <div class="app-name">Featured Listings</div>
+        <div class="app-desc">Let employers pay to pin jobs to the top of your board.</div>
+        <div class="app-price">$29<span>/mo</span></div>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">📄</div>
+        <div class="app-name">Resume Database</div>
+        <div class="app-desc">Monetize your candidate pool. Employers pay to access resumes.</div>
+        <div class="app-price">$49<span>/mo</span></div>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">📈</div>
+        <div class="app-name">Advanced Analytics</div>
+        <div class="app-desc">Deep traffic, conversion, and listing performance data.</div>
+        <div class="app-price">$19<span>/mo</span></div>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">📣</div>
+        <div class="app-name">Alert Campaigns</div>
+        <div class="app-desc">Blast job alerts to your full subscriber list on demand.</div>
+        <div class="app-price">$29<span>/mo</span></div>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">🤖</div>
+        <div class="app-name">AI Matching</div>
+        <div class="app-desc">Surface the right candidates for each listing automatically.</div>
+        <div class="app-price">Coming soon</div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2rem;font-size:0.875rem;color:var(--text-dim);">More apps launching with beta. Suggest one → <a href="mailto:hello@freejobboard.ai" style="color:var(--indigo-light);text-decoration:none;">hello@freejobboard.ai</a></p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="container">
+    <p class="section-label">How It Works</p>
+    <h2 class="section-title">Up and running in minutes.</h2>
+    <p class="section-sub">No developer needed. No hosting to set up. No ugly WordPress plugins. Just a beautiful job board — live, fast.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Sign up free</h3>
+        <p>Create your account. Name your board. Pick your niche. Done in 60 seconds.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Customize your board</h3>
+        <p>Add your logo, set your colors, configure categories. Your brand, your rules.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Connect your domain</h3>
+        <p>Point your domain at us. SSL is automatic. <code style="background:var(--bg3);padding:2px 5px;border-radius:4px;font-size:0.85em;">yournichejobs.com</code> goes live.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Start posting & growing</h3>
+        <p>Post jobs, invite employers, grow your candidate base. Install apps when you're ready to monetize.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="who">
+  <div class="container">
+    <p class="section-label">Who It's For</p>
+    <h2 class="section-title">Two types of builders.<br />One platform.</h2>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-label">B2C — Board Founders</div>
+        <h3>Launch your own niche job board</h3>
+        <p>You see a gap in the market. A community that needs its own job board. Now you can build it — without paying $100/month before you've made a single dollar.</p>
+        <ul class="who-list">
+          <li>Niche community builders</li>
+          <li>Newsletter operators adding jobs</li>
+          <li>Industry veterans going independent</li>
+          <li>Side projects with real revenue potential</li>
+          <li>Anyone who tried the old tools and quit</li>
+        </ul>
+      </div>
+      <div class="who-card">
+        <div class="who-label">B2B — Companies & Agencies</div>
+        <h3>Embed a careers page anywhere</h3>
+        <p>One script tag. Your jobs appear on your website, your client's site, or your community platform. No engineering required. Manage everything from one admin.</p>
+        <ul class="who-list">
+          <li>Startups replacing static careers pages</li>
+          <li>Staffing agencies managing multiple clients</li>
+          <li>Communities monetizing job postings</li>
+          <li>Associations serving members</li>
+          <li>VC firms posting portfolio jobs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILT BY -->
+<section style="background:var(--bg);padding:4rem 1.5rem;text-align:center;">
+  <div class="container" style="max-width:640px;">
+    <p style="font-size:0.875rem;color:var(--text-dim);margin-bottom:0.75rem;">Built by the team behind</p>
+    <p style="font-size:1.125rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;">⚡ BESSjobs.com</p>
+    <p style="font-size:0.9375rem;color:var(--text-muted);line-height:1.7;">
+      We built a modern, full-featured job board for the BESS industry from scratch. Then we thought: <em>why doesn't everyone have access to something this good?</em> So we're packaging it — and giving it away free.
+    </p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section" id="cta">
+  <div class="container" style="max-width:640px;">
+    <h2>Get early access.<br />Free. Forever.</h2>
+    <p>Join the beta. Be first. Help shape what we build next.</p>
+    <div class="waitlist-form" style="margin-bottom:0.75rem;">
+      <input type="email" id="email-input-2" placeholder="Enter your email address" required />
+      <button onclick="joinWaitlist2()">Join Beta — Free →</button>
+    </div>
+    <div class="success-msg" id="success-msg-2">
+      🎉 You're on the list! We'll reach out when beta access opens.
+    </div>
+    <p class="waitlist-note" style="margin-bottom:0;">No spam. No credit card. Just early access when we open the doors.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:0.5rem;">
+    <a href="mailto:hello@freejobboard.ai">hello@freejobboard.ai</a>
+    &nbsp;·&nbsp;
+    <a href="https://bessjobs.com">BESSjobs.com</a>
+    &nbsp;·&nbsp;
+    Built with ☕ by <a href="https://intragentic.com">Intragentic</a>
+  </p>
+  <p>© 2026 FreeJobBoard.ai · All rights reserved.</p>
+</footer>
+
+<script>
+  async function submitEmail(email, successId) {
+    const res = await fetch('https://formspree.io/f/xreavbqe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email, source: 'freejobboard-waitlist' })
+    });
+    return res.ok;
+  }
+
+  async function joinWaitlist() {
+    const input = document.getElementById('email-input');
+    if (!input.value || !input.value.includes('@')) {
+      input.focus(); return;
+    }
+    const btn = input.nextElementSibling;
+    btn.textContent = 'Joining...';
+    btn.disabled = true;
+    const ok = await submitEmail(input.value, 'success-msg');
+    if (ok) {
+      input.parentElement.style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    } else {
+      btn.textContent = 'Join Beta — Free →';
+      btn.disabled = false;
+      alert('Something went wrong. Try emailing us at hello@freejobboard.ai');
+    }
+  }
+
+  async function joinWaitlist2() {
+    const input = document.getElementById('email-input-2');
+    if (!input.value || !input.value.includes('@')) {
+      input.focus(); return;
+    }
+    const btn = input.nextElementSibling;
+    btn.textContent = 'Joining...';
+    btn.disabled = true;
+    const ok = await submitEmail(input.value, 'success-msg-2');
+    if (ok) {
+      input.parentElement.style.display = 'none';
+      document.getElementById('success-msg-2').style.display = 'block';
+    } else {
+      btn.textContent = 'Join Beta — Free →';
+      btn.disabled = false;
+      alert('Something went wrong. Try emailing us at hello@freejobboard.ai');
+    }
+  }
+</script>
+
+</body>
+</html>
