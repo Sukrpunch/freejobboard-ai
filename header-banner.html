@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1500px;
+    height: 500px;
+    background: #0a0a0f;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .glow1 {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%);
+    top: -150px; left: 200px;
+  }
+  .glow2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%);
+    bottom: -100px; right: 300px;
+  }
+
+  .content {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 120px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(99,102,241,0.12);
+    border: 1px solid rgba(99,102,241,0.3);
+    color: #a5b4fc;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    width: fit-content;
+  }
+  .badge-dot { width: 6px; height: 6px; background: #818cf8; border-radius: 50%; }
+
+  h1 {
+    font-size: 68px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: #f1f5f9;
+    margin-bottom: 18px;
+  }
+  h1 .accent { color: #818cf8; }
+  h1 .dot { color: #334155; }
+
+  .sub {
+    font-size: 20px;
+    color: #475569;
+    font-weight: 500;
+    margin-bottom: 36px;
+  }
+  .sub strong { color: #64748b; }
+
+  .pills {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 7px 13px;
+    font-size: 13px;
+    color: #94a3b8;
+    font-weight: 500;
+  }
+  .pill .check { color: #22c55e; font-weight: 800; }
+
+  /* Right side mock */
+  .mock {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 380px;
+    background: #111118;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 10;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  }
+  .mock-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .mock-title { font-size: 14px; font-weight: 700; color: #e2e8f0; }
+  .mock-btn {
+    background: #6366f1;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+  .mock-job {
+    background: #1a1a24;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .mock-job:last-child { margin-bottom: 0; }
+  .mock-logo {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .mock-job-title { font-size: 12px; font-weight: 700; color: #e2e8f0; }
+  .mock-job-sub { font-size: 11px; color: #475569; margin-top: 2px; }
+  .mock-tag {
+    margin-left: auto;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+  .tag-green { background: rgba(34,197,94,0.12); color: #22c55e; }
+  .tag-indigo { background: rgba(99,102,241,0.12); color: #818cf8; }
+  .tag-amber { background: rgba(245,158,11,0.12); color: #fbbf24; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+
+  <div class="content">
+    <div class="badge"><div class="badge-dot"></div> Now in beta</div>
+    <h1>The Shopify of<br/>job boards<span class="accent">.</span></h1>
+    <p class="sub"><strong>Free forever.</strong> No credit card. No ugly templates.</p>
+    <div class="pills">
+      <div class="pill"><span class="check">✓</span> Custom domain</div>
+      <div class="pill"><span class="check">✓</span> No watermarks</div>
+      <div class="pill"><span class="check">✓</span> Unlimited listings</div>
+      <div class="pill"><span class="check">✓</span> Embeddable widget</div>
+      <div class="pill"><span class="check">✓</span> Google Jobs SEO</div>
+    </div>
+  </div>
+
+  <!-- Mock board -->
+  <div class="mock">
+    <div class="mock-header">
+      <div class="mock-title">⚡ Your Niche Board</div>
+      <div class="mock-btn">Post a Job</div>
+    </div>
+    <div class="mock-job">
+      <div class="mock-logo" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)"></div>
+      <div>
+        <div class="mock-job-title">Senior Engineer</div>
+        <div class="mock-job-sub">Acme Corp · Remote</div>
+      </div>
+      <div class="mock-tag tag-green">Full-time</div>
+    </div>
+    <div class="mock-job">
+      <div class="mock-logo" style="background:linear-gradient(135deg,#22c55e,#16a34a)"></div>
+      <div>
+        <div class="mock-job-title">Product Designer</div>
+        <div class="mock-job-sub">StartupCo · NYC</div>
+      </div>
+      <div class="mock-tag tag-indigo">Contract</div>
+    </div>
+    <div class="mock-job">
+      <div class="mock-logo" style="background:linear-gradient(135deg,#f59e0b,#d97706)"></div>
+      <div>
+        <div class="mock-job-title">Head of Growth</div>
+        <div class="mock-job-sub">GrowthLabs · Austin</div>
+      </div>
+      <div class="mock-tag tag-amber">Featured</div>
+    </div>
+  </div>
+</body>
+</html>

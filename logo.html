@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 400px;
+    height: 400px;
+    background: #0a0a0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .glow {
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .card {
+    position: relative;
+    z-index: 10;
+    width: 280px;
+    height: 280px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16162a 100%);
+    border-radius: 64px;
+    border: 1.5px solid rgba(99,102,241,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.04),
+      0 30px 80px rgba(0,0,0,0.6),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  .icon {
+    font-size: 96px;
+    line-height: 1;
+    filter: drop-shadow(0 0 20px rgba(99,102,241,0.6));
+  }
+
+  .wordmark {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: #e2e8f0;
+    letter-spacing: -0.03em;
+  }
+  .wordmark span { color: #818cf8; }
+
+  /* Subtle grid */
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 64px;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="card">
+    <div class="icon">⚡</div>
+    <div class="wordmark">FreeJobBoard<span>.ai</span></div>
+  </div>
+</body>
+</html>
