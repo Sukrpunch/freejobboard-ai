@@ -172,3 +172,118 @@ Look for:
 - Anyone who's written "how I built a job board" threads
 
 Tag strategy: Don't tag competitors. Tag allies and curious builders.
+
+---
+
+## 🟠 REDDIT POSTS
+
+### Posting schedule
+- Day 1 (Monday): r/SideProject
+- Day 2 (Tuesday): r/indiehackers
+- Day 3 (Wednesday): r/EntrepreneurRideAlong
+- Day 4 (Thursday): r/SaaS
+- Day 5+ (when you have comments/upvotes on others): r/Entrepreneur
+
+### Rule: Never post more than 1-2 per day. Space them out to avoid spam filters.
+
+---
+
+### r/SideProject
+**Title:** I got tired of paying $100/month for job board templates that look like 2015. So I built a free one.
+
+Been building niche job boards and kept running into the same wall — every platform charges a fortune for features that should be table stakes. Custom domain? Paid. Remove their branding? Paid. Decent mobile design? Apparently too much to ask.
+
+So I built FreeJobBoard.ai — launch a modern, beautiful job board free. Forever.
+
+What's actually free:
+- Custom domain
+- No watermarks or platform branding
+- Unlimited listings
+- Embeddable widget (drop your jobs on any site with one script tag)
+- Email alerts for candidates
+- Auto SEO — Google Jobs structured data, sitemaps, clean URLs
+- Dark mode, mobile-first, instant search
+
+We make money through an app store (featured listings, resume database, AI matching) — you only pay for what you actually need.
+
+Beta is open now. Would love feedback from this community.
+
+👉 freejobboard.ai
+
+---
+
+### r/indiehackers
+**Title:** Built a job board platform in a weekend and launched it. Here's what I learned.
+
+Background: I run BESSjobs.com (niche job board for the battery energy storage industry). Built it from scratch — Next.js, Supabase, Stripe, Vercel. Took weeks.
+
+Then I thought: why doesn't everyone have access to something this good?
+
+So this weekend I packaged the whole thing into FreeJobBoard.ai — a platform where anyone can launch a niche job board in 60 seconds. Free forever.
+
+The business model: app store. Featured listings ($29/mo), resume database ($49/mo), AI matching (coming). Free on the core, revenue on the extras.
+
+Current status: beta live, first users signing up, zero marketing budget (just this post and an X thread).
+
+Happy to answer questions about the build, the stack, or the business model.
+
+👉 freejobboard.ai
+
+---
+
+### r/EntrepreneurRideAlong
+**Title:** Day 1: Launched a free job board platform into the void on a Sunday evening. Here's what happened.
+
+The idea: every job board tool charges $100+/month for templates that look terrible. Build something better. Give it away free. Make money on apps.
+
+What I shipped:
+- Full job board platform (modern design, custom domains, SEO, email alerts)
+- Landing page
+- Beta registration live
+
+What happened on Day 1:
+- Posted on X at dinner time on a Sunday (terrible timing, my bad)
+- 0 signups so far
+- 0 traffic
+- Completely fine with this
+
+Will post updates as things develop. If you want to follow along — or if you've ever thought about launching a niche job board — come join the beta.
+
+freejobboard.ai
+
+(The honesty here is intentional — this community deserves real numbers, not hype)
+
+---
+
+### r/SaaS
+**Title:** We copied the Shopify model for job boards — free platform, revenue on apps. Curious what this community thinks.
+
+The problem: job board template companies charge $100/month upfront. Most people building niche boards can't justify that before they have revenue.
+
+Our model: free forever on the core product. App store for premium features (featured listings, resume database, analytics, AI matching). We make money when board founders make money.
+
+Launched beta today at freejobboard.ai.
+
+Questions for this community:
+1. Does the free-forever model concern you from a sustainability standpoint?
+2. Which apps would you actually pay for?
+3. What's missing from the feature list?
+
+Genuine feedback welcome — we're in beta and actively building.
+
+---
+
+### r/Entrepreneur (post last — after you have social proof on other subs)
+**Title:** The job board template industry is a $100/month racket. We're ending it.
+
+Quick math: Jobboardfire, Smartjobboard, and their competitors charge $79–$299/month. Before you've made a single dollar. Before you've validated your idea.
+
+That's the wrong model. It punishes experimentation and kills ideas before they start.
+
+We built FreeJobBoard.ai on a different model — free forever on the core product, revenue through an app store. You grow, we grow. If your board never makes money, you never pay us.
+
+It's the Shopify model applied to job boards.
+
+Beta is live now.
+
+freejobboard.ai
